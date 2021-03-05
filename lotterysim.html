@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lottery Sim</title>
+</head>
+	
+	<script language= "javascript">
+		
+		 LuckyForLife = []; 
+		
+		for( i = 0; i < 5; i++) {
+			LuckyForLife[i] = Math.floor(Math.random()*48 + 1);
+		}
+			
+		 LuckyBall = Math.floor(Math.random()*18 + 1);
+		
+		LuckyForLife.sort(function(a, b){return a-b});
+		
+		LotteryNumbers = prompt("Enter First 5 Winning Lottery Numbers: ").split(" ")
+		LotteryLuckyBall =  parseInt(prompt("Enter Lucky Ball Number: "))
+		
+		document.write("Your Pick: ");
+		for( i = 0; i < 5; i++) {
+			document.write(LuckyForLife[i] + " "); 
+		}
+		
+		document.write("<br> Winning Numbers and Lucky Ball Number: ");
+		for( i = 0; i < 5; i++) {
+			document.write(LotteryNumbers[i] + " ");
+		}
+		document.write(LotteryLuckyBall);
+		
+		MatchCount = 0;
+		LuckyMatch = false;
+		
+		for ( i = 0; i < 5; i++) {
+			if (LuckyForLife[i] == LotteryNumbers[i]) {
+				MatchCount++;
+			}
+		}
+		
+		if (LuckyBall == LotteryLuckyBall) {
+			LuckyMatch = True;	
+			document.write("<br> The lucky ball matched!");
+		} else {
+			document.write("<br> Lucky Ball did not match.");
+		}
+		
+		Payout = "$0";
+		
+		if (MatchCount == 0 && LuckyMatch == true) {
+			Payout = "$4";
+		}
+		if (MatchCount == 1 && LuckyMatch == true) {
+			Payout = "$6";
+		}
+		if (MatchCount == 2 && LuckyMatch == false) {
+			Payout = "$3";
+		}
+		if (MatchCount == 2 && LuckyMatch == true) {
+			Payout = "$25";
+		}
+		if (MatchCount == 3 && LuckyMatch == false) {
+			Payout = "$20";
+		}
+		if (MatchCount == 3 && LuckyMatch == true) {
+			Payout = "$150";
+		}
+		if (MatchCount == 4 && LuckyMatch == false) {
+			Payout = "$200";
+		}
+		if (MatchCount == 4 && LuckyMatch == true) {
+			Payout = "$5,000";
+		}
+		if (MatchCount == 5 && LuckyMatch == false) {
+			Payout = "$25,000 a YEAR for LIFE";
+		}
+		if (MatchCount == 5 && LuckyMatch == true) {
+			Payout = "$7,000 a WEEK for LIFE";
+		}
+		
+		document.write("<br> Payout for your pick: " + Payout);
+		
+	</script>
+<body>
+</body>
+</html>
